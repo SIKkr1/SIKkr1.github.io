@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디스코드 서버 소개</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #7289da, #99aab5);
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            text-align: center;
+        }
+        header {
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #7289da;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #5b6eae;
+        }
+        footer {
+            margin-top: 30px;
+            color: #cccccc;
+        }
+        .disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .consent {
+            margin-top: 20px;
+        }
+        .bot {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>초이스 디스코드 서버에 오신 것을 환영합니다!</h1>
+        <p>[! 우 식] - 다양한 주제를 가지고 소통하며, 친구들을 만들고 즐거운 시간을 보낼 수 있는 공간입니다.</p>
+    </header>
+    <div class="content">
+        <h2>서버 소개</h2>
+        <p>우리 서버는 여러분이 서로 소통하고 다양한 활동을 즐길 수 있도록 설계되었습니다.</p>
+        <h3>서버 특징</h3>
+        <ul>
+            <li>다양한 채널: 게임, 음악, 일반 대화 등</li>
+            <li>친목 활동: 이벤트와 게임 대회 개최</li>
+            <li>전문적인 모더레이터 팀: 안전하고 쾌적한 환경 유지</li>
+        </ul>
+
+        <h3>아래 링크를 클릭하여 서버에 참여하세요!</h3>
+        <button id="joinButton" class="disabled" disabled>디스코드 서버 참여하기</button>
+
+        <div class="consent">
+            <h3>서버 참가하기 동의</h3>
+            <label>
+                <input type="checkbox" id="consentCheckbox">
+                서버 참가에 동의합니다.
+            </label>
+            <br>
+            <button id="submitBtn">동의</button>
+        </div>
+
+        <!-- 봇 설명 섹션 -->
+        <div class="bot">
+            <h3>[CHOICE 정보]</h3>
+            <p>[원하는 유저의 정보를 확인하는 봇 ]</p>
+            <button id="addBot1" class="disabled" disabled>이 봇 추가하기</button>
+        </div>
+
+        <div class="bot">
+            <h3>[CHOICE 쿠다]</h3>
+            <p>[직접 추가한 이모지를 확대해서 보이는 봇]</p>
+            <button id="addBot2" class="disabled" disabled>이 봇 추가하기</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 CHOICE 서버</p>
+    </footer>
+
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const consented = document.getElementById('consentCheckbox').checked;
+            const joinButton = document.getElementById('joinButton');
+            const addBot1 = document.getElementById('addBot1');
+            const addBot2 = document.getElementById('addBot2');
+
+            if (consented) {
+                alert('동의하셨습니다.');
+                joinButton.classList.remove('disabled');
+                joinButton.disabled = false;
+
+                // 봇 추가 버튼 활성화
+                addBot1.classList.remove('disabled');
+                addBot1.disabled = false;
+                addBot1.onclick = function() {
+                    window.open('https://discord.com/oauth2/authorize?client_id=1286991874984378388', '_blank');
+                };
+
+                addBot2.classList.remove('disabled');
+                addBot2.disabled = false;
+                addBot2.onclick = function() {
+                    window.open('https://discord.com/oauth2/authorize?client_id=1281191897498652735', '_blank');
+                };
+
+                joinButton.onclick = function() {
+                    window.open('https://discord.gg/MN2bQxZFFZ', '_blank');
+                };
+            } else {
+                alert('동의 버튼을 눌러주세요.');
+                joinButton.classList.add('disabled');
+                joinButton.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
